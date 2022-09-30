@@ -30,7 +30,7 @@ Filters genes that are expressed in less than 3 cells.
 #sc.pp.normalize_total(adata, target_sum=1e4)
 #sc.pp.log1p(adata)
 ```
-These steps are skipped as the data provided already contains the adata.layers["Counts"] layer which is created after doing these steps and can then be stored as a layer. A layer can be understood as freezed state of observation vs. variable expression matrix X. 
+These steps are skipped as the data provided already contains the adata.layers["Counts"] layer which is created after doing these steps and can then be stored as a layer. A layer can be understood as frozen state of observation vs. variable expression matrix X after some mathematical computation on the dataframe. 
 
 ```
 sc.pp.highly_variable_genes(

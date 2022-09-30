@@ -1,13 +1,16 @@
 # Task1_Ten_60_BIO
 Scanpy is a python library which is used to analyze single cell Gene Expression Data.
 
-Anndata is a type of matrix data structure organization class that has a specific form of data matrix for a specific type of data ![Anndata_str](https://user-images.githubusercontent.com/99180702/193336621-2d53ca6c-e8bc-4682-a0a8-df23859d6621.png)
+Anndata is a type of matrix data structure organization class that has a specific form of data matrix for a specific type of data 
+![Anndata_str](https://user-images.githubusercontent.com/99180702/193336621-2d53ca6c-e8bc-4682-a0a8-df23859d6621.png)
 
 ```
 import scvi
 import scanpy as sc
 import numpy as np
 import sys
+import matplotlib
+import leidenalg
 ```
 
 Importing the libraries needed
@@ -66,4 +69,21 @@ sc.pl.pca_variance_ratio(adata, log=True)
 ```
 The plot looks like:![variance_ratio](https://user-images.githubusercontent.com/99180702/193353671-e08bef1d-6acd-485d-8b2e-ecb48a1160ed.png)
 
-If the variance ratio difference will be large for PC's we can simply use normalization by CPM approach to remove the highly expressed PC's and make the distribution better and more even for the rest of the PC's.
+If the variance ratio difference will be large for PC's we can simply use normalization by CPM approach to remove the highly expressed PC's and make the distribution better and more even for the rest of the PC's. Here that is not needed.
+
+The steps to creating a set of marker genes involves computing neighbourhood graphs and then embedding and clustering the neighbourhood graph. I do not have an absolutely clear idea about the maths involved in these steps and the working basis of these steps.
+```
+sc.pp.neighbors(adata, n_neighbors=10, n_pcs=40)
+sc.tl.umap(adata)
+sc.tl.leiden(adata)
+sc.tl.rank_genes_groups(adata, 'leiden', method='t-test')
+sc.pl.rank_genes_groups(adata, n_genes=25, sharey=False)
+```
+The ranked genes can now be used as marker genes for sell type prediction.
+
+A model can also be trained for cell type annotation using scVI.
+
+```
+model = scvi.model.SCVI(adata)
+model.train()
+```

@@ -1,4 +1,4 @@
-# Task1_Ten_60_BIO
+# Cell_Annotation_&_Homogenization_Using_Gene_Expression_Data
 Scanpy is a python library which is used to analyze single cell Gene Expression Data.
 
 Anndata is a type of matrix data structure organization class that has a specific form of data matrix for a specific type of data 

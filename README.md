@@ -1,5 +1,5 @@
 # Cell_Annotation_&_Homogenization_Using_Gene_Expression_Data
-Scanpy is a python library which is used to analyze single cell Gene Expression Data.
+scVI and scANVI are python libraries which is used to analyze single cell Gene Expression Data.
 
 Anndata is a type of matrix data structure organization class that has a specific form of data matrix for a specific type of data 
 ![Anndata_str](https://user-images.githubusercontent.com/99180702/193336621-2d53ca6c-e8bc-4682-a0a8-df23859d6621.png)
